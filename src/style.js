@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 // eslint-disable-next-line
 export const Globalstyle = createGlobalStyle`
-body { 
+/* body { 
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -14,7 +14,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 .App {
   padding-top: 56px;
 }

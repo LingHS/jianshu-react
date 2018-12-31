@@ -40,6 +40,39 @@ const ContainerItem = style.div`
         color:#ea6f5a;
     }
 `;
+const colorF = '#fff';
+const colorG = '#969696';
+const SearchWrapper = style.div`
+    
+    float:left;
+    position:relative;
+    .slide-enter{
+        width:240px;
+        transition: width .5s ease .1s;
+    }
+    .slide-enter-active{
+        width:320px;
+    }
+    .slide-exit {
+        transition: width .5s ease .1s;
+    }
+    .slide-exit-active{
+        width:240px;
+    }
+    .iconfont {
+        margin-left:-26px;
+        border-radius:50%;
+        vertical-align: middle;
+        color:${colorG};
+        &.focused {
+            border:8px solid ${colorG};
+            background:${colorG};
+            color:${colorF};
+            margin-left:-36px;
+        }
+    }
+`;
+
 const NavSearch = style.input.attrs({
   placeholder: '搜索',
 })`
@@ -47,7 +80,7 @@ const NavSearch = style.input.attrs({
     height:38px;
     border:none;
     outline:none;
-    padding:0 20px;
+    padding:0 35px 0 20px;
     box-sizing:border-box;
     border-radius:19px;
     background:green;
@@ -55,6 +88,13 @@ const NavSearch = style.input.attrs({
     margin-left:20px
     background:#eee;
     font-size:14px;
+    color:#666;
+    &::placeholder{
+        color:#999;
+    }
+    &.focused {
+        width:320px;
+    }
 `;
 const Addition = style.div`
     position:absolute;
@@ -79,5 +119,5 @@ const Button = style.div`
     }
 `;
 export {
-  HeaderWrapper, Logo, Container, ContainerItem, NavSearch, Addition, Button,
+  HeaderWrapper, Logo, Container, ContainerItem, NavSearch, Addition, Button, SearchWrapper,
 };
