@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { actionCreators } from './store';
 import {
   HeaderWrapper, Logo, Container, ContainerItem, NavSearch, Addition, Button, SearchWrapper,
 } from './style';
@@ -7,25 +9,12 @@ import {
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      focused: false,
-    };
+    this.a = 1;
   }
 
-  handleInputFocus = () => {
-    this.setState({
-      focused: true,
-    });
-  }
-
-  handleInputBlur = () => {
-    this.setState({
-      focused: false,
-    });
-  }
 
   render() {
-    const { focused } = this.state;
+    const { focused } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -42,8 +31,8 @@ class Header extends Component {
             >
               <NavSearch
                 className={focused ? 'focused' : ''}
-                onFocus={this.handleInputFocus}
-                onBlur={this.handleInputBlur}
+                onFocus={this.props.handleInputFocus}
+                onBlur={this.props.handleInputBlur}
               />
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe631;</i>
@@ -61,4 +50,13 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({ focused: state.header.focused });
+const mapDispatchToProps = dispatch => ({
+  handleInputFocus() {
+    dispatch(actionCreators.searchFocus());
+  },
+  handleInputBlur() {
+    dispatch(actionCreators.searchBlur());
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
