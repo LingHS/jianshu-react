@@ -3,15 +3,56 @@ import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import {
-  HeaderWrapper, Logo, Container, ContainerItem, NavSearch, Addition, Button, SearchWrapper,
+  HeaderWrapper,
+  Logo, Container,
+  ContainerItem,
+  NavSearch,
+  Addition,
+  Button,
+  SearchWrapper,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoItem,
 } from './style';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.a = 1;
+const getListArea = (show) => {
+  if (show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          热门搜索
+          <SearchInfoSwitch>
+            换一批
+          </SearchInfoSwitch>
+        </SearchInfoTitle>
+        <div style={{ overflow: 'auto' }}>
+          <SearchInfoItem>区块链</SearchInfoItem>
+          <SearchInfoItem>小程序</SearchInfoItem>
+          <SearchInfoItem>vue</SearchInfoItem>
+          <SearchInfoItem>PHP</SearchInfoItem>
+          <SearchInfoItem>故事</SearchInfoItem>
+          <SearchInfoItem>flutter</SearchInfoItem>
+          <SearchInfoItem>理财</SearchInfoItem>
+          <SearchInfoItem>美食</SearchInfoItem>
+          <SearchInfoItem>故事</SearchInfoItem>
+          <SearchInfoItem>flutter</SearchInfoItem>
+          <SearchInfoItem>理财</SearchInfoItem>
+          <SearchInfoItem>美食</SearchInfoItem>
+        </div>
+      </SearchInfo>
+    );
   }
+};
 
+class Header extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  componentWillMount() {
+
+  }
 
   render() {
     const { focused } = this.props;
@@ -36,12 +77,13 @@ class Header extends Component {
               />
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe631;</i>
+            {getListArea(focused)}
           </SearchWrapper>
         </Container>
         <Addition>
           <Button className="writting">
             <i className="iconfont">&#xe615;</i>
-            写文章
+              写文章
           </Button>
           <Button className="reg">注册</Button>
         </Addition>
@@ -50,7 +92,7 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => ({ focused: state.header.focused });
+const mapStateToProps = state => ({ focused: state.getIn(['header', 'focused']) });
 const mapDispatchToProps = dispatch => ({
   handleInputFocus() {
     dispatch(actionCreators.searchFocus());

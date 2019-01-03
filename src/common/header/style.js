@@ -118,6 +118,61 @@ const Button = style.div`
         background: #ec6149;
     }
 `;
+const SearchInfo = style.div`
+    width:210px;
+    padding: 20px 20px 0px;
+    min-height:100px;
+    margin-left: 20px;
+    margin-top: 9px;
+    box-shadow:0 0 8px rgba(0,0,0,.2);
+    position:relative;
+    &::before{
+        background: #fff;
+        content: " ";
+        position:absolute;
+        left: 27px;
+        width: 16px;
+        height: 16px;
+        transform: rotate(45deg);
+        top: -8px;
+        box-sizing:border-box;
+    }
+`;
+const SearchInfoTitle = style.div`
+    line-height: 20px;
+    font-size: 14px;
+    color: #969696;
+    margin-bottom:10px;
+`;
+const SearchInfoSwitch = style.span`
+    line-height: 20px;
+    font-size: 13px;
+    float: right;
+    color: #969696;
+`;
+const SearchInfoItem = style.a`
+    line-height: 20px;
+    float:left;
+    padding 0 5px;
+    margin-right:10px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    color: #787878;
+    border-radius: 3px;
+`;
+
 export {
-  HeaderWrapper, Logo, Container, ContainerItem, NavSearch, Addition, Button, SearchWrapper,
+  HeaderWrapper,
+  Logo,
+  Container,
+  ContainerItem,
+  NavSearch,
+  Addition,
+  Button,
+  SearchWrapper,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoItem,
 };
