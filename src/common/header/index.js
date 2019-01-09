@@ -16,35 +16,6 @@ import {
   SearchInfoItem,
 } from './style';
 
-const getListArea = (show) => {
-  if (show) {
-    return (
-      <SearchInfo>
-        <SearchInfoTitle>
-          热门搜索
-          <SearchInfoSwitch>
-            换一批
-          </SearchInfoSwitch>
-        </SearchInfoTitle>
-        <div style={{ overflow: 'auto' }}>
-          <SearchInfoItem>区块链</SearchInfoItem>
-          <SearchInfoItem>小程序</SearchInfoItem>
-          <SearchInfoItem>vue</SearchInfoItem>
-          <SearchInfoItem>PHP</SearchInfoItem>
-          <SearchInfoItem>故事</SearchInfoItem>
-          <SearchInfoItem>flutter</SearchInfoItem>
-          <SearchInfoItem>理财</SearchInfoItem>
-          <SearchInfoItem>美食</SearchInfoItem>
-          <SearchInfoItem>故事</SearchInfoItem>
-          <SearchInfoItem>flutter</SearchInfoItem>
-          <SearchInfoItem>理财</SearchInfoItem>
-          <SearchInfoItem>美食</SearchInfoItem>
-        </div>
-      </SearchInfo>
-    );
-  }
-};
-
 class Header extends Component {
   // constructor(props) {
   //   super(props);
@@ -53,9 +24,38 @@ class Header extends Component {
   componentWillMount() {
 
   }
+  // eslint-disable-next-line
+  getListArea() {
+    const {
+      focused: show, list, page, mouseIn, totalPage,
+    } = this.props;
+
+    if (show || mouseIn) {
+      return (
+        <SearchInfo
+          onMouseEnter={this.props.handleMouseEnter}
+          onMouseLeave={this.props.handleMouseLeave}
+        >
+          <SearchInfoTitle>
+              热门搜索
+            <SearchInfoSwitch onClick={() => { this.props.handleChangePage(page, totalPage, this.spinIcon); }}>
+              <i ref={(icon) => { this.spinIcon = icon; }} className="iconfont">&#xe606;</i>
+              换一批
+            </SearchInfoSwitch>
+          </SearchInfoTitle>
+          <div style={{ overflow: 'auto' }}>
+            {
+              list.slice((page - 1) * 10, page * 10).map(item => <SearchInfoItem key={item}>{item}</SearchInfoItem>)
+            }
+          </div>
+        </SearchInfo>
+      );
+    }
+    return null;
+  }
 
   render() {
-    const { focused } = this.props;
+    const { focused, list } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -72,12 +72,12 @@ class Header extends Component {
             >
               <NavSearch
                 className={focused ? 'focused' : ''}
-                onFocus={this.props.handleInputFocus}
+                onFocus={() => { this.props.handleInputFocus(list); }}
                 onBlur={this.props.handleInputBlur}
               />
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe631;</i>
-            {getListArea(focused)}
+            {list.length !== 0 && this.getListArea()}
           </SearchWrapper>
         </Container>
         <Addition>
@@ -92,13 +92,33 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => ({ focused: state.getIn(['header', 'focused']) });
+const mapStateToProps = state => ({
+  focused: state.getIn(['header', 'focused']),
+  list: state.getIn(['header', 'list']),
+  page: state.getIn(['header', 'page']),
+  totalPage: state.getIn(['header', 'totalPage']),
+  mouseIn: state.getIn(['header', 'mouseIn']),
+});
+let rotate = 360;
 const mapDispatchToProps = dispatch => ({
-  handleInputFocus() {
+  handleInputFocus({ size }) {
+    size === 0 && dispatch(actionCreators.getList());
     dispatch(actionCreators.searchFocus());
   },
   handleInputBlur() {
     dispatch(actionCreators.searchBlur());
   },
+  handleMouseEnter() {
+    dispatch(actionCreators.mouseEnter());
+  },
+  handleMouseLeave() {
+    dispatch(actionCreators.mouseLeave());
+  },
+  handleChangePage(page, totalPage, spin) {
+    rotate += 360;
+    spin.style.transform = `rotate(${rotate}deg)`;
+    dispatch(actionCreators.changePage((page % totalPage) + 1));
+  },
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

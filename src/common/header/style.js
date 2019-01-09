@@ -149,6 +149,12 @@ const SearchInfoSwitch = style.span`
     font-size: 13px;
     float: right;
     color: #969696;
+    cursor: pointer;
+    i {
+        display: inline-block;
+        transform-origin: center center;
+        transition: all .2s ease-in;
+    }
 `;
 const SearchInfoItem = style.a`
     line-height: 20px;
