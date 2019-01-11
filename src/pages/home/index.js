@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { HomeWrapper, HomeLeft, HomeRight } from './style';
+import { actionCreators } from './store';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Topic from './components/Topic';
