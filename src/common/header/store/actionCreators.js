@@ -17,9 +17,9 @@ export const searchBlur = () => ({
 });
 
 export const getList = () => (dispatch) => {
-  axios.get('/api/headerList.json', {
+  axios.get('/api/trending_search', {
   }).then(({ data }) => {
-    dispatch(changeList(data.data));
+    dispatch(changeList(data));
   }).catch(err => console.log(err));
 };
 
