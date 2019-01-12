@@ -126,6 +126,7 @@ const SearchInfo = style.div`
     margin-top: 9px;
     box-shadow:0 0 8px rgba(0,0,0,.2);
     position:relative;
+    background:#fff;
     &::before{
         background: #fff;
         content: " ";

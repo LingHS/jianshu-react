@@ -77,7 +77,7 @@ class Header extends Component {
               />
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe631;</i>
-            {list.length !== 0 && this.getListArea()}
+            {list.size !== 0 ? this.getListArea() : null}
           </SearchWrapper>
         </Container>
         <Addition>
