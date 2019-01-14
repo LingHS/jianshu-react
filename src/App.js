@@ -15,12 +15,10 @@ class App extends Component {
         <Globalstyle />
         <Fontstyle />
         <Provider store={store}>
-          <Header />
           <BrowserRouter>
-            <div>
-              <Route path="/" exact component={Home} />
-              <Route path="/detail" exact component={Detail} />
-            </div>
+            <Header />
+            <Route path="/" exact component={Home} />
+            <Route path="/detail" exact component={Detail} />
           </BrowserRouter>
         </Provider>
       </div>
