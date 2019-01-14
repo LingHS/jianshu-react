@@ -36,6 +36,11 @@ const defaultState = fromJS({
     title: '一小时读完一本书，原来这么简单',
     desc: '昨晚，我用一小时的时间，读完了一本书，而且输出了满载书中精华内容的读书笔记，连我自己都感到不可思议。 就是这本《思考的艺术》。300多页。 心中...',
     imgUrl: '//upload-images.jianshu.io/upload_images/6392451-cba000113bb6a90a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
+  }, {
+    id: 2,
+    title: '万国博览会，同为“鬼工球”日本竟造假，中国用沸水检验惊艳世界',
+    desc: '说起文化，我国是一个有着上下五千年文化的古国，民间工艺数不胜数。在1915年的时候，在美国旧金山曾经举办了巴拿马万国博览会，而在此时世界各国都派...',
+    imgUrl: '//upload-images.jianshu.io/upload_images/14701230-a2362ab49cbca10f.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
   }],
   recommendList: [{
     id: 1,
@@ -59,12 +64,17 @@ const defaultState = fromJS({
   },
   ],
   writerList: [],
+  showScroll: false,
 });
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case constants.CHANGE_LIST:
       return state.set('writerList', action.data);
+    case constants.ADD_HOMELIST:
+      return state.set('articleList', state.get('articleList').concat(action.list));
+    case constants.TOGGLE_TOP_SHOW:
+      return state.set('showScroll', action.flag);
     default:
       return state;
   }

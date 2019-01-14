@@ -10,9 +10,7 @@ const HeaderWrapper = style.nav`
     border-bottom: #f0f0f0 solid 1px;
 
 `;
-const Logo = style.a.attrs({
-  href: '/',
-})`
+const Logo = style.div`
     position:absolute;
     left:0;
     height:100%;

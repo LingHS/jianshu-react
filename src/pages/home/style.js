@@ -4,6 +4,7 @@ export const HomeWrapper = style.div`
 overflow:hidden;
 width: 960px;
 margin: 0 auto;
+
 `;
 export const HomeLeft = style.div`
 width: 625px;
@@ -94,4 +95,26 @@ height: 300px;
 `;
 export const WriteItem = style.div`
     margin-top: 15px;
+`;
+export const LoadMore = style.div`
+   width:100%;
+   height:40px;
+   line-height:40px;
+   background:#a5a5a5;
+   border-radius:20px;
+   color: #fff;
+   margin:30px 0;
+   text-align:center;
+   cursor:pointer;
+`;
+export const BackTop = style.div`
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width:50px;
+    height:50px;
+    line-height:60px;
+    text-align:center;
+    border:1px solid #ccc;
+    
 `;

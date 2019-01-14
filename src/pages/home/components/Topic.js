@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
 // class Detail extends Component {
@@ -15,6 +15,7 @@ const Topic = (props) => {
         topicList.map(item => (
           <TopicItem key={item.get('id')}>
             <img
+              alt=""
               className="topic-pic"
               src={item.get('imgUrl')}
             />
