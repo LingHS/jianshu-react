@@ -65,7 +65,7 @@ class Header extends Component {
         <Container>
           <ContainerItem className="left active">首页</ContainerItem>
           <ContainerItem className="left">下载App</ContainerItem>
-          <ContainerItem className="right">登录</ContainerItem>
+          <Link to="/login"><ContainerItem className="right">登录</ContainerItem></Link>
           <ContainerItem className="right"><i className="iconfont">&#xe636;</i></ContainerItem>
           <SearchWrapper>
             <CSSTransition

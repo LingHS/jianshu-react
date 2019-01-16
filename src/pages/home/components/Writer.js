@@ -17,7 +17,10 @@ class Writer extends PureComponent {
         <WriteWrapper>
           { list.map(item => (
             <WriteItem key={item.get('id')}>
-              <div>{item.get('nickname')}</div>
+              <img className="ava" src={`${item.get('avatar_source')}?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp`} alt="" />
+              <div className="follow">+关注</div>
+              <div className="nick-name">{item.get('nickname')}</div>
+              <div className="p">{`写了${item.get('total_wordage')}字 · ${item.get('total_likes_count')}喜欢`}</div>
             </WriteItem>
           )) }
 
