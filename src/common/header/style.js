@@ -15,7 +15,7 @@ const Logo = style.div`
     left:0;
     height:100%;
     width:80px;
-    background:url(${logo});
+    background:url(${logo}) no-repeat;
 `;
 const Container = style.div`
     width:960px;
@@ -117,6 +117,7 @@ const Button = style.div`
     }
 `;
 const SearchInfo = style.div`
+    z-index:1;
     width:210px;
     padding: 20px 20px 0px;
     min-height:100px;

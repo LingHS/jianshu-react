@@ -37,7 +37,7 @@ class Home extends PureComponent {
           <Recommend />
           <Writer />
         </HomeRight>
-        {showScroll === true ? <BackTop onClick={() => { window.scrollTo(0, 0); }} /> : null}
+        {showScroll === true ? <BackTop onClick={() => { window.scrollTo(0, 0); }}>Top</BackTop> : null}
 
       </HomeWrapper>
     );

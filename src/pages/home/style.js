@@ -87,14 +87,38 @@ export const RecommendItem = style.div`
 `;
 export const WriteWrapper = style.div`
 width:278px;
-border: 1px solid #dcdcdc;
-border-radius: 3px;
-height: 300px;
-// line-height:300px;
-// text-align:center;
+
 `;
 export const WriteItem = style.div`
     margin-top: 15px;
+    overflow:hidden;
+    line-height:20px;
+    .ava{
+        float:left;
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .follow{
+        float:right;
+        margin-top: 5px;
+        padding: 0;
+        font-size: 13px;
+        color: #42c02e;
+    }
+    .nick-name{
+        padding-top: 5px;
+        margin-right: 60px;
+        font-size: 14px;
+        display: block;
+    }
+    .p{
+        margin: 2px 0px 10px 0;
+        font-size: 12px;
+        color: #969696;
+    }
 `;
 export const LoadMore = style.div`
    width:100%;

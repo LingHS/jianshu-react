@@ -14,7 +14,7 @@ const List = (props) => {
     <Fragment>
       {
         list.map((item, index) => (
-          <Link key={index} to="/detail">
+          <Link key={index} to={`/detail/ ${item.get('id')}`}>
             <ListItem>
               <img className="pic" alt="" src={item.get('imgUrl')} />
               <ListInfo>
